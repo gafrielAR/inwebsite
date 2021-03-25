@@ -13,7 +13,10 @@ class MY_Controller extends CI_Controller
         $this->data['tahun']      = date('Y'); 
         $this->data['CI_VERSION'] = CI_VERSION;
         $this->data['site_title'] = 'Contoh';
-
+		
+		// $q  =$this->db->last_query($q_template);
+		// opn($this->template);exit();
+		
         if (isset($_SESSION['user_info'])) { 
             $this->data['user_info'] = $_SESSION['user_info'];
             $this->data['is_login']  = 'is_login';
@@ -29,6 +32,15 @@ class MY_Controller extends CI_Controller
             $this->_is_admin         = false;
             $this->_is_login         = false;
         }
+		
+		
+    /*****************************Setting Template Aktif************************************************/ 
+	
+		$this->db->where('aktif', '1');
+		$q_template = $this->db->get('template')->result();
+		$this->template = 'frontend/'.$q_template[0]->template_name.'/';
+		
+		
     }
     /*****************************************************************************/ 
 }

@@ -17,7 +17,7 @@ class Page extends MY_Controller {
 	function index()
     {
 		// $this->data['content'] = $this->parser->parse('frontend/index.html', $this->data, true);
-		$this->parser->parse('frontend/index.html', $this->data, false);
+		$this->parser->parse($this->template.'index.html', $this->data, false);
 	}
     /*****************************************************************************/
 
