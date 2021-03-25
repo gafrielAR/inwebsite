@@ -7,6 +7,7 @@ class Page extends MY_Controller {
 	{
 		parent::__construct();
 		$this->data['header'] = $this->parser->parse(template.'/header.html', $this->data, true);
+		$this->data['menu'] = $this->parser->parse(template.'/menu.html', $this->data, true);
 		// $this->data['menu'] = $this->parser->parse('frontend/parsial/menu.html', $this->data, true);
 		// $this->data['breadcrum'] = $this->parser->parse('frontend/parsial/breadcrum.html', $this->data, true);
 		// $this->data['body'] = $this->parser->parse('frontend/parsial/body.html', $this->data, true);
