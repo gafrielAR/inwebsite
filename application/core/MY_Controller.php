@@ -31,13 +31,72 @@ class MY_Controller extends CI_Controller
         }
 		
 		
+    /*****************************Load Menu************************************************/ 
+       /*  $this->db->join('menu_hyperlink b', 'b.menu_id = a.menu_id');	
+        $this->db->join('hyperlink c', 'c.hyperlink_id = b.hyperlink_id');	
+        $this->db->where('a.disabled', '0');
+        $this->db->where('b.disabled', '0');
+        $this->db->where('c.disabled', '0');
+        $this->db->where('b.menu_hyperlink_parent', '0');
+        $all_link = $this->db->get('menu a')->result();
+            foreach ($all_link as $key => $value) {
+                
+                $this->db->join('menu_hyperlink b', 'b.menu_id = a.menu_id');	
+                $this->db->join('hyperlink c', 'c.hyperlink_id = b.hyperlink_id');
+                $this->db->where('menu_hyperlink_parent', $value->hyperlink_id);
+                $value->child = $this->db->get('menu a')->result();
+                if (isset($value->child[0])) {
+                    $this->data['class_menu'] = 'nav-link scrollto';
+                }else{
+                    $this->data['class_menu'] = 'dropdown';
+                }
+            }
+        
+        $this->data['all_link'] = $all_link;
+ */
+
+
+        //opn($all_link);exit();
+
+        $this->db->where('menus_level', 1);
+        $menus = $this->db->get('menus')->result();
+        foreach ($menus as $key => $value) {
+            $this->db->where('menus_parent', $value->menus_id);
+            $submenu = $this->db->get('menus')->result();
+            $subchild = array();
+            $subchild_ren = array();
+            foreach ($submenu as $skey => $sub_value) {
+                $array_key = array_keys((array)$sub_value) ;
+                $array_value = array_values((array)$sub_value);
+                foreach ($array_key as $sub_key => $subvaluemenu) {
+                    $subchild_ren['ch_'.$subvaluemenu] = $array_value[$sub_key];
+                }
+                $subchild [] = $subchild_ren;
+            }
+            $value->child = $subchild;
+        }
+        foreach ($menus as $m_key => $m_value) {
+            if (empty($m_value->child)) {
+                $m_value->class_menu = 'nav-link scrollto';
+                $m_value->class_chevron = '';
+            }else{
+                $m_value->class_menu = 'dropdown';
+                $m_value->class_chevron = 'bi bi-chevron-down';
+            }
+        }
+        $this->data['menus'] = $menus;
+
+        
+        // opn($menus);exit();
+    /*****************************************************************************/ 
+		
     /*****************************Setting Template Aktif************************************************/ 
 		$this->db->where('aktif', '1');
 		$q_template = $this->db->get('template')->result();
 		define('template', 'frontend/'.$q_template[0]->template_name);
 		// opn($this->template);exit();
-    }
     /*****************************************************************************/ 
+    }
 }
 
 /* End of file MY_Controller.php */
