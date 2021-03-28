@@ -58,6 +58,7 @@ class MY_Controller extends CI_Controller
 
         //opn($all_link);exit();
 
+        // header
         $this->db->where('menus_level', 1);
         $menus = $this->db->get('menus')->result();
         foreach ($menus as $key => $value) {
@@ -74,10 +75,11 @@ class MY_Controller extends CI_Controller
                 $subchild [] = $subchild_ren;
             }
             $value->child = $subchild;
+            opn($value->child);exit();
         }
         foreach ($menus as $m_key => $m_value) {
             if (empty($m_value->child)) {
-                $m_value->class_menu = 'nav-link scrollto';
+                $m_value->class_menu = 'nav-link';
                 $m_value->class_chevron = '';
             }else{
                 $m_value->class_menu = 'dropdown';
@@ -86,8 +88,107 @@ class MY_Controller extends CI_Controller
         }
         $this->data['menus'] = $menus;
 
+        // footer
+        $this->db->where('menus_category', 2);
+        $usefullink = $this->db->get('menus')->result();
+        $this->data['usefullink'] = $usefullink;
+
+        $this->db->where('menus_category', 3);
+        $services = $this->db->get('menus')->result();
+        $this->data['services'] = $services;
         
-        // opn($menus);exit();
+        // content
+        // hero
+        $this->db->where('content_category', 1);
+        $hero = $this->db->get('content')->result();
+        $this->data['hero'] = $hero;
+        foreach ($hero as $key => $value) {
+            $value->hero_button     = 'btn-get-started d-inline-flex align-items-center justify-content-center align-self-center';
+            $value->hero_img_class  = 'img-fluid';
+            $value->aos_up          = 'fade-up';
+            $value->aos_zoom_out    = 'zoom-out';
+        }
+        // opn($value);exit();
+
+        // values
+        $this->db->where('content_category', 2);
+        $value = $this->db->get('content')->result();
+        $this->data['value'] = $value;
+        foreach ($value as $key => $value) {
+            $value->after_row       = 'col-lg-4';
+            $value->content_class   = 'box';
+            $value->img_class       = 'img-fluid';
+            $value->aos_up          = 'fade-up';
+        }
+        // opn($value);exit();
+        
+        // count
+        $this->db->where('content_category', 3);
+        $count = $this->db->get('content')->result();
+        $this->data['count'] = $count;
+        foreach ($count as $key => $value) {
+            $value->after_row       = 'col-lg-4';
+            $value->content_class   = 'box';
+            $value->img_class       = 'img-fluid';
+            $value->aos_up          = 'fade-up';
+        }
+        // opn($value);exit();
+
+        // features
+        $this->db->where('content_category', 4);
+        $feature = $this->db->get('content')->result();
+        $this->data['feature'] = $feature;
+        foreach ($feature as $key => $value) {
+            $value->aos_zoom_out = 'zoom-out';
+        }
+
+        $this->db->where('content_category', 5);
+        $feature_img = $this->db->get('content')->result();
+        $this->data['feature_img'] = $feature_img;
+        // opn($img);exit();
+
+        $this->db->where('content_category', 6);
+        $title = $this->db->get('content')->result();
+        $this->data['title'] = $title;
+
+        $this->db->where('content_category', 7);
+        $descvisi = $this->db->get('content')->result();
+        $this->data['descvisi'] = $descvisi;
+
+        $this->db->where('content_category', 8);
+        $descvisi = $this->db->get('content')->result();
+        $this->data['descvisi'] = $descvisi;
+
+
+        $this->db->where('content_category', 9);
+        $vismisimg = $this->db->get('content')->result();
+        $this->data['vismisimg'] = $vismisimg;
+
+        $this->db->where('content_category', 10);
+        $pilih = $this->db->get('content')->result();
+        $this->data['pilih'] = $pilih;
+
+        $this->db->where('content_category', 11);
+        $kelebihan = $this->db->get('content')->result();
+        $this->data['kelebihan'] = $kelebihan;
+
+        $this->db->where('content_category', 12);
+        $faq = $this->db->get('content')->result();
+        $this->data['faq'] = $faq;
+        foreach ($faq as $key => $value) {
+            $value->subclasstitle = 'accordion-button collapsed';
+            $value->subclassdesc  = 'accordion-collapse collapse';
+            $value->subclassdescbody  = 'accordion-body';
+        }
+
+        $this->db->where('content_category', 13);
+        $testimoni = $this->db->get('content')->result();
+        $this->data['testimoni'] = $testimoni;
+
+        $this->db->where('content_category', 14);
+        $post = $this->db->get('content')->result();
+        $this->data['post'] = $post;
+        // opn($img);exit();
     /*****************************************************************************/ 
 		
     /*****************************Setting Template Aktif************************************************/ 

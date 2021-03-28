@@ -2,12 +2,12 @@
     <div class="container-fluid container-xl d-flex align-items-center justify-content-between">
 
         <a href="{base}" class="logo d-flex align-items-center">
-            <img src="{base}/aset/img/logo.png" alt="">
-            <span>FlexStart</span>
+            <img src="{base}/aset/img/bos.logo.png" alt="">
+            <span>BOSWEB</span>
         </a>
 
         <nav id="navbar" class="navbar">
-            <ul>
+            <ul id="nav-menu">
 <!-- 
 
                 <li><a class="nav-link scrollto active" href="#hero">Home</a></li>
@@ -19,12 +19,20 @@
 -->
 
                 {menus}
-                <li class="{class_menu}" ><a href="{menus_href}"><span>{menus_name}</span><i class="{class_chevron}"></i></a>
-                <ul>
-                    {child}
-                    <li><a href="{ch_menus_href}">{ch_menus_name}</a></li>
-                    {/child}
-                </ul>
+                <li class="{class_menu}">
+                    <a href="{base}/{menus_href}">
+                        <span>{menus_name}</span>
+                        <i class="{class_chevron}"></i>
+                    </a>
+                    <ul>
+                        {child}
+                            <li>
+                                <a href="{ch_menus_href}">
+                                    {ch_menus_name}
+                                </a>
+                            </li>
+                        {/child}
+                    </ul>
                 </li>
                 {/menus}
 <!-- 
