@@ -134,17 +134,14 @@
                         </div><!-- End Tab 1 Content -->
                         {/descvisi}
 
-                        <div class="tab-pane fade show" id="tab2">
-                            <div class="d-flex align-items-center mb-2">
-                                <i class="bi bi-check2"></i>
-                                <h4>Misi 1</h4>
+                        <div class="tab-pane fade show" id="Misi">
+                            {descmisi}
+                            <div class="{content_main_class}">
+                                <i class="{content_icon}"></i>
+                                <h4>{content_title}</h4>
                             </div>
-                            <p>Memberikan solusi dan layanan terpadu dalam setiap layanan Teknologi Informasi yang kami berikan.</p>
-                            <div class="d-flex align-items-center mb-2">
-                                <i class="bi bi-check2"></i>
-                                <h4>Misi 2</h4>
-                            </div>
-                            <p>Memberikan Produk dan Layanan terpadu dalam setiap layanan purna jual ke semua pelanggan.</p>
+                            <p>{content_desc}</p>
+                            {/descmisi}
                         </div><!-- End Tab 2 Content -->
 
                     </div>
@@ -289,61 +286,46 @@
             </header>
 
             <div class="row">
-                <div class="col-lg-6">
-                    <!-- F.A.Q List 1-->
-                    <div class="accordion accordion-flush" id="faqlist1">
-                        {faq}
-                        <div class="accordion-item">
-                            <h2 class="accordion-header">
-                                <button class="{subclasstitle}" type="button" data-bs-toggle="collapse" data-bs-target="#id-{content_id}">
-                                    {content_title}
-                                </button>
-                            </h2>
-                            <div id="id-{content_id}" class="{subclassdesc}" data-bs-parent="#faqlist1">
-                                <div class="{subclassdescbody}">
-                                    {content_desc}
+                {faq}
+                    <div class="col-lg-6">
+                        <!-- F.A.Q List 1-->
+                        <div class="accordion accordion-flush" id="faqlist1">
+                            <div class="accordion-item">
+                                <h2 class="accordion-header">
+                                    <button class="{subclasstitle}" type="button" data-bs-toggle="collapse" data-bs-target="#id-{content_id}">
+                                        {content_title}
+                                    </button>
+                                </h2>
+                                <div id="id-{content_id}" class="{subclassdesc}" data-bs-parent="#faqlist1">
+                                    <div class="{subclassdescbody}">
+                                        {content_desc}
+                                    </div>
                                 </div>
                             </div>
+
+                            <!-- <div class="accordion-item">
+                                <h2 class="accordion-header">
+                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#33">
+                                        berapa lama waktu pengerjaan website?
+                                    </button>
+                                </h2>
+                                <div id="33" class="accordion-collapse collapse" data-bs-parent="#faqlist1">
+                                    <div class="accordion-body">
+                                        untuk waktu pengerjaan setiap website pasti berbeda, tergantung jenis website yang ingin di buat.
+                                    </div>
+                                </div>
+                            </div> -->
+
                         </div>
-                        {/faq}
-
-                        <!-- <div class="accordion-item">
-                            <h2 class="accordion-header">
-                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#33">
-                                    berapa lama waktu pengerjaan website?
-                                </button>
-                            </h2>
-                            <div id="33" class="accordion-collapse collapse" data-bs-parent="#faqlist1">
-                                <div class="accordion-body">
-                                    untuk waktu pengerjaan setiap website pasti berbeda, tergantung jenis website yang ingin di buat.
-                                </div>
-                            </div>
-                        </div> -->
-
                     </div>
-                </div>
+                {/faq}
 
                 <div class="col-lg-6">
 
-                    {faq}
-                        <div class="accordion-item">
-                            <h2 class="accordion-header">
-                                <button class="{subclasstitle}" type="button" data-bs-toggle="collapse" data-bs-target="#id-{content_id}">
-                                    {content_title}
-                                </button>
-                            </h2>
-                            <div id="id-{content_id}" class="{subclassdesc}" data-bs-parent="#faqlist2">
-                                <div class="{subclassdescbody}">
-                                    {content_desc}
-                                </div>
-                            </div>
-                        </div>
-                    {/faq}
+                <!--    F.A.Q List 2
+                <div class="accordion accordion-flush" id="faqlist2">
 
-                    F.A.Q List 2
-                    <div class="accordion accordion-flush" id="faqlist2">
-
-                <!--         <div class="accordion-item">
+                    <div class="accordion-item">
                             <h2 class="accordion-header">
                                 <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq2-content-1">
                                     Apakah Website yang di buat responsive?
@@ -367,10 +349,10 @@
                                     Harga untuk pembuatan website beragam, tergantung website yang ingin anda buat.
                                 </div>
                             </div>
-                        </div> -->
+                        </div>
 
                     </div>
-                </div>
+                </div> -->
 
             </div>
 
