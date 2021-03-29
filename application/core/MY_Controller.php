@@ -75,7 +75,7 @@ class MY_Controller extends CI_Controller
                 $subchild [] = $subchild_ren;
             }
             $value->child = $subchild;
-            opn($value->child);exit();
+            // opn($value->child);exit();
         }
         foreach ($menus as $m_key => $m_value) {
             if (empty($m_value->child)) {
@@ -156,9 +156,9 @@ class MY_Controller extends CI_Controller
         $this->data['descvisi'] = $descvisi;
 
         $this->db->where('content_category', 8);
-        $descvisi = $this->db->get('content')->result();
-        $this->data['descvisi'] = $descvisi;
-
+        $descmisi = $this->db->get('content')->result();
+        $this->data['descmisi'] = $descmisi;
+        // opn($descmisi);exit();
 
         $this->db->where('content_category', 9);
         $vismisimg = $this->db->get('content')->result();
