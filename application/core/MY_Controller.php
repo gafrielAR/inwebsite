@@ -188,6 +188,21 @@ class MY_Controller extends CI_Controller
         $this->db->where('content_category', 14);
         $post = $this->db->get('content')->result();
         $this->data['post'] = $post;
+
+        $this->db->where('content_category', 15);
+        $tentang = $this->db->get('content')->result();
+        $this->data['tentang'] = $tentang;
+        foreach ($tentang as $key => $value) {
+            $value->imgclass = 'col-lg-6 d-flex align-items-center';
+            $value->imgsubclass = 'img-fluid';
+            $value->titleclass  = 'col-lg-6 d-flex flex-column justify-content-center';
+            $value->titlesubclass  = 'content';
+            $value->subtitle  = 'Siapa Kami';
+        }
+
+        $this->db->where('content_category', 16);
+        $service = $this->db->get('content')->result();
+        $this->data['service'] = $service;
         // opn($img);exit();
     /*****************************************************************************/ 
 		
