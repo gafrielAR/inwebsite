@@ -8,7 +8,7 @@
                     <p>Subscribe ke email kami dan dapatkan notifikasi postingan terbaru kami<p>
                 </div>
                 <div class="col-lg-6">
-                    <form action="" method="post">
+                    <form action="{base}/page/subscribe" method="post">
                         <input type="email" name="email" placeholder="Email"><input type="submit" value="Subscribe">
                     </form>
                 </div>
@@ -26,10 +26,9 @@
                     </a>
                     <p>Ikuti Media Sosial Kami.</p>
                     <div class="social-links mt-3">
-                        <a onclick="window.open('https://twitter.com/inkomputer','_blank');" class="twitter"><i class="bi bi-twitter"></i></a>
-                        <a onclick="window.open('https://fb.com/inkomputer.id','_blank');" class="facebook"><i class="bi bi-facebook"></i></a>
-                        <a onclick="window.open('https://instagram.com/inkomputer','_blank');" class="instagram"><i class="bi bi-instagram bx bxl-instagram"></i></a>
-                        <a onclick="window.open('https://linkedin.com/company/inkomputer','_blank');" class="linkedin"><i class="bi bi-linkedin bx bxl-linkedin"></i></a>
+                        {social}
+                        <a onclick="window.open({content_desc});" class="{content_title}"><i class="{content_icon}"></i></a>
+                        {/social}
                     </div>
                 </div>
 
@@ -46,22 +45,18 @@
                 <div class="col-lg-2 col-6 footer-links">
                     <h4>Our Services</h4>
                     <ul>
-                        {services}
-                            <li><i class="bi bi-chevron-right"></i><a href="{menus_href}">{menus_name}</a>
+                        {service}
+                            <li><i class="bi bi-chevron-right"></i><a href="{base}/page/layanan">{content_title}</a>
                             </li>
-                        {/services}
+                        {/service}
                     </ul>
                 </div>
 
                 <div class="col-lg-3 col-md-12 footer-contact text-center text-md-start">
                     <h4>Contact Us</h4>
-                    <p>
-                        Balikpapan Regency <br>
-                        Cluster De Castarica <br>
-                        Blok JE 9 no 21b <br><br>
-                        <strong>Phone:</strong> +62 811 590 890<br>
-                        <strong>Email:</strong> office@inkomputer.com<br>
-                    </p>
+                    {contactfoot}
+                        {content_desc}
+                    {/contactfoot}
 
                 </div>
 

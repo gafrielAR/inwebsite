@@ -10,9 +10,12 @@ class Page extends MY_Controller {
 		$this->data['header'] = $this->parser->parse(template.'/header.html', $this->data, true);
 		$this->data['menu'] = $this->parser->parse(template.'/menu.html', $this->data, true);
 		$this->data['breadcrum'] = $this->parser->parse(template.'/breadcrumb.html', $this->data, true);
-		// $this->data['menu'] = $this->parser->parse('frontend/parsial/menu.html', $this->data, true);
+		$this->data['sidebar'] = $this->parser->parse(template.'/blog-sidebar.html', $this->data, true);
 		// $this->data['body'] = $this->parser->parse('frontend/parsial/body.html', $this->data, true);
 		$this->data['footer'] = $this->parser->parse(template.'/footer.html', $this->data, true);
+
+		$this->load->library('session');
+		$this->load->helper('text');
 	}
     /*****************************************************************************/
     /*****************************************************************************/
@@ -32,6 +35,37 @@ class Page extends MY_Controller {
 	function hubungi()
     {
 		$this->data['function'] = str_replace("_"," ", __FUNCTION__);
+
+		$name	= $this->input->post('nama_pelanggan');
+		$nohp	= $this->input->post('hp_pelanggan');
+		$nowa	= $this->input->post('wa_pelanggan');
+
+		$data	= array(
+			'nama_pelanggan'	=> $name,
+			'hp_pelanggan'		=> $nohp,
+			'wa_pelanggan'		=> $nowa
+		);
+
+		// opn($data);exit();
+		$insert = $this->db->insert('konsultasi', $data);
+
+		if ($insert) {
+			$_SESSION['request_teknisi'] = 1;
+
+		}
+
+		if (isset($_SESSION['request_teknisi'])) {
+			$this->data['msg'] =
+			'
+			<div class="col-md-12 text-center">
+				<p>Terimakasih! Kami akan segera menghubungi anda</p>
+			</div>
+			';
+			$this->session->sess_destroy(isset($_SESSION['request_teknisi']));
+		} else {
+			$this->data['msg'] ="";
+		}
+
 		$this->data['content'] = $this->parser->parse(template.'/contact.html', $this->data, true);
 		$this->parser->parse(template.'/index_frontend.html', $this->data, false);
 	}
@@ -50,73 +84,20 @@ class Page extends MY_Controller {
 		$this->parser->parse(template.'/index_frontend.html', $this->data, false);
 	}
     /*****************************************************************************/
-	function portofolio()
-    {
-		$this->data['function'] = str_replace("_"," ", __FUNCTION__);
-		// opn(__FUNCTION__);exit;
-		$arg = func_get_args();
-		
-		if (isset($arg[0])) {
-			if($arg[0] == 'detail'){
-				$this->db->where('portfolio_id', $arg[1] );
-				$detil = $this->db->join('portfolio_category','portfolio.portfolio_category = portfolio_category.portfolio_category_id','Left');
-				if($detil){
-					$this->db->where('portfolio_id', $arg[1]);
-					$detil_info = $this->db->get('portfolio')->result();
-					foreach($detil_info as $key => $value){
-						$this->db->where('portfolio_id', $value->portfolio_id);
-						$value->image = $this->db->get('portfolio_image')->result();
-						foreach($value->image as $k => $v){
-									$gambar[] 		=	$v->portfolio_image_name;
-								}							
-						}
-						$this->data['detil_info'] = $detil_info;
-					
-					}else{
-						redirect(base.'/page/portfolio');
-					}
-					$this->data['content'] = $this->parser->parse(template.'/portfolio-details.html', $this->data, true);
-			}
-		} else {
-			
-			$portfolio_cat[] = $this->db->get('portfolio_category')->result();
-			foreach($portfolio_cat as $key => $value){
-				$portfolio_cat = $value;
-			}
-			$this->data['portfolio_cat'] = $portfolio_cat ;
-			
-			// $this->db->where('produk.kategori_produk_id IN ('.$implode.')');
-			$this->db->join('portfolio_category','portfolio.portfolio_category = portfolio_category.portfolio_category_id','Left');
-			$this->db->join('portfolio_image','portfolio.portfolio_id = portfolio_image.portfolio_id','Left');
-			$this->db->group_by('portfolio_category');
-			$portfolio_all[] = $this->db->get('portfolio')->result();
-			foreach($portfolio_all as $key => $value){
-					$portfolio_all = $value;
-				}
-				// opn($portfolio_all);exit();
-				$this->data['portfolio_all'] = $portfolio_all ;
-				
-				$this->data['content'] = $this->parser->parse(template.'/portfolio.html', $this->data, true);
-		}
-		
-		$this->parser->parse(template.'/index_frontend.html', $this->data, false);
-	}
-    /*****************************************************************************/
-	function blog()
-    {
-		$this->data['function'] = str_replace("_"," ", __FUNCTION__);
-		$arg = func_get_args();
-		
-		if (isset($arg[0])) {
-			if($arg[0] == 'detail'){
-				$this->data['content'] = $this->parser->parse(template.'/blog-single.html', $this->data, true);
-			} else {
-				redirect(base.'/page/blog');
-			}
-		} else {
-			$this->data['content'] = $this->parser->parse(template.'/blog.html', $this->data, true);
-		}
-		$this->parser->parse(template.'/index_frontend.html', $this->data, false);
+	function subscribe()
+	{
+		// opn(current_url());exit();
+
+		$email	= $this->input->post('email');
+
+		$data	= array(
+			'subscribe_email'		=> $email
+		);
+
+		$insert = $this->db->insert('subscribe', $data);
+
+		redirect($_SERVER['HTTP_REFERER']);
+
 	}
     /*****************************************************************************/
 

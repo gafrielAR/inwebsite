@@ -1,0 +1,46 @@
+<div class="col-lg-4">
+
+    <div class="sidebar">
+
+        <h3 class="sidebar-title">Search</h3>
+        <div class="sidebar-item search-form">
+            <form action="{base}/blog" method="get">
+                <input type="text" name="cari" minlength="3">
+                <button type="submit"><i class="bi bi-search"></i></button>
+            </form>
+        </div><!-- End sidebar search formn-->
+
+        <h3 class="sidebar-title">Categories</h3>
+        <div class="sidebar-item categories">
+            <ul>
+                {blogcat}
+                <li><a href="{base}/blog?kategori={blog_category}">{blog_category}</a></li>
+                {/blogcat}
+            </ul>
+        </div><!-- End sidebar categories-->
+
+        <h3 class="sidebar-title">Recent Posts</h3>
+        <div class="sidebar-item recent-posts">
+
+            {postblog}
+            <div class="post-item clearfix">
+                <img src="{base}/aset/img/blog/{blog_img}" alt="">
+                <h4><a href="{base}/blog/detail/{blog_id}">{blog_title}</a></h4>
+                <time datetime="2020-01-01">{blog_date}</time>
+            </div>
+            {/postblog}
+
+        </div><!-- End sidebar recent posts-->
+
+        <h3 class="sidebar-title">Tags</h3>
+        <div class="sidebar-item tags">
+            <ul>
+                {tag}
+                <li><a href="{base}/blog?tag={tag_name}">{tag_name}</a></li>
+                {/tag}
+            </ul>
+        </div><!-- End sidebar tags-->
+
+    </div><!-- End sidebar -->
+
+</div><!-- End blog sidebar -->

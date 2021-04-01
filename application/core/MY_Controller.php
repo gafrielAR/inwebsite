@@ -102,36 +102,18 @@ class MY_Controller extends CI_Controller
         $this->db->where('content_category', 1);
         $hero = $this->db->get('content')->result();
         $this->data['hero'] = $hero;
-        foreach ($hero as $key => $value) {
-            $value->hero_button     = 'btn-get-started d-inline-flex align-items-center justify-content-center align-self-center';
-            $value->hero_img_class  = 'img-fluid';
-            $value->aos_up          = 'fade-up';
-            $value->aos_zoom_out    = 'zoom-out';
-        }
         // opn($value);exit();
 
         // values
         $this->db->where('content_category', 2);
         $value = $this->db->get('content')->result();
         $this->data['value'] = $value;
-        foreach ($value as $key => $value) {
-            $value->after_row       = 'col-lg-4';
-            $value->content_class   = 'box';
-            $value->img_class       = 'img-fluid';
-            $value->aos_up          = 'fade-up';
-        }
         // opn($value);exit();
         
         // count
         $this->db->where('content_category', 3);
         $count = $this->db->get('content')->result();
         $this->data['count'] = $count;
-        foreach ($count as $key => $value) {
-            $value->after_row       = 'col-lg-4';
-            $value->content_class   = 'box';
-            $value->img_class       = 'img-fluid';
-            $value->aos_up          = 'fade-up';
-        }
         // opn($value);exit();
 
         // features
@@ -185,24 +167,45 @@ class MY_Controller extends CI_Controller
         $testimoni = $this->db->get('content')->result();
         $this->data['testimoni'] = $testimoni;
 
-        $this->db->where('content_category', 14);
-        $post = $this->db->get('content')->result();
-        $this->data['post'] = $post;
+        $posthome = $this->db->get('blog', 3)->result();
+        $this->data['posthome'] = $posthome;
+
+        $this->db->group_by('blog_category');
+        $blogcat = $this->db->get('blog', 5)->result();
+        $this->data['blogcat'] = $blogcat;
+
+        $postblog = $this->db->get('blog', 5)->result();
+        $this->data['postblog'] = $postblog;
+
+        $tag[] = $this->db->get('tag')->result();
+        foreach($tag as $key => $value){
+            $tag = $value;
+        }
+        $this->data['tag'] = $tag ;
+        // opn($post);exit();
 
         $this->db->where('content_category', 15);
         $tentang = $this->db->get('content')->result();
         $this->data['tentang'] = $tentang;
         foreach ($tentang as $key => $value) {
-            $value->imgclass = 'col-lg-6 d-flex align-items-center';
-            $value->imgsubclass = 'img-fluid';
-            $value->titleclass  = 'col-lg-6 d-flex flex-column justify-content-center';
-            $value->titlesubclass  = 'content';
             $value->subtitle  = 'Siapa Kami';
         }
 
         $this->db->where('content_category', 16);
         $service = $this->db->get('content')->result();
         $this->data['service'] = $service;
+
+        $this->db->where('content_category', 17);
+        $contact = $this->db->get('content')->result();
+        $this->data['contact'] = $contact;
+
+        $this->db->where('content_category', 17);
+        $contactfoot = $this->db->get('content', 3)->result();
+        $this->data['contactfoot'] = $contactfoot;
+
+        $this->db->where('content_category', 18);
+        $social = $this->db->get('content')->result();
+        $this->data['social'] = $social;
         // opn($img);exit();
     /*****************************************************************************/ 
 		

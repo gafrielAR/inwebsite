@@ -2,3 +2,51 @@
     height: 260px;
     width: 100%;
 }
+
+#portfolio-details .swiper-slide {
+    height: 600px;
+}
+
+#portfolio-details img.crop {
+    height: 100%;
+    overflow: hidden;
+    position: relative;
+}
+
+.contact .konsultasi-form {
+    background: #fafbff;
+    padding: 30px;
+    height: 100%;
+}
+    
+.contact .konsultasi-form input, .contact .konsultasi-form textarea {
+    border-radius: 0;
+    box-shadow: none;
+    font-size: 14px;
+    border-radius: 0;
+}
+  
+.contact .konsultasi-form input:focus, .contact .konsultasi-form textarea:focus {
+    border-color: #4154f1;
+}
+  
+.contact .konsultasi-form input {
+    padding: 10px 15px;
+}
+  
+.contact .konsultasi-form textarea {
+    padding: 12px 15px;
+}
+  
+.contact .konsultasi-form button[type="submit"] {
+    background: #4154f1;
+    border: 0;
+    padding: 10px 30px;
+    color: #fff;
+    transition: 0.4s;
+    border-radius: 4px;
+}
+  
+.contact .konsultasi-form button[type="submit"]:hover {
+    background: #5969f3;
+}

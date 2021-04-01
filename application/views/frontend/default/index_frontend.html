@@ -78,6 +78,41 @@
 			});
 		});
 	</script>
+	<script>
+		$(document).ready(function(){
+			$('#wasama').prop('checked', false);
+			
+			if($('#wahp').is(":checked")){
+				$('#waPelanggan').attr('readonly', true);	
+				//$('#waPelanggan').val($('#hpPelanggan').val());
+				$('#hpPelanggan').on('keyup focusout', function () {
+					// <!-- console.log($('#hpPelanggan').val()); -->
+					$('#waPelanggan').val($('#hpPelanggan').val());
+				});			
+			}
+			
+			
+			$('#wahp').click(function(){
+				if($('#wahp').is(":not(:checked)")){
+					$('#waPelanggan').attr('readonly', false);
+					$('#waPelanggan').val('');
+					$('#hpPelanggan').on('keyup', function () {
+						// <!-- console.log($('#hpPelanggan').val()); -->
+						$('#waPelanggan').val('');
+					});	
+				}else{
+					$('#waPelanggan').attr('readonly', true);	
+					$('#waPelanggan').val($('#hpPelanggan').val());
+					$('#hpPelanggan').on('keyup', function () {
+						// <!-- console.log($('#hpPelanggan').val()); -->
+						$('#waPelanggan').val($('#hpPelanggan').val());
+					});			
+				}
+			});
+			
+			
+		});
+	</script>
 
 </body>
 
