@@ -50,3 +50,14 @@
 .contact .konsultasi-form button[type="submit"]:hover {
     background: #5969f3;
 }
+
+/* Chrome, Safari, Edge, Opera */
+#contact input {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+/* Firefox */
+#contact input {
+    -moz-appearance: textfield;
+}

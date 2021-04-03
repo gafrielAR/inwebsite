@@ -27,14 +27,14 @@ class Page extends MY_Controller {
     /*****************************************************************************/
 	function tentang()
     {
-		$this->data['function'] = str_replace("_"," ", __FUNCTION__);
+		$this->data['function'] = str_replace("_"," ", 'Tentang');
 		$this->data['content'] = $this->parser->parse(template.'/about.html', $this->data, true);
 		$this->parser->parse(template.'/index_frontend.html', $this->data, false);
 	}
     /*****************************************************************************/
 	function hubungi()
     {
-		$this->data['function'] = str_replace("_"," ", __FUNCTION__);
+		$this->data['function'] = str_replace("_"," ", 'Hubungi');
 
 		$name	= $this->input->post('nama_pelanggan');
 		$nohp	= $this->input->post('hp_pelanggan');
@@ -70,16 +70,9 @@ class Page extends MY_Controller {
 		$this->parser->parse(template.'/index_frontend.html', $this->data, false);
 	}
     /*****************************************************************************/
-	function tim()
-    {
-		$this->data['function'] = str_replace("_"," ", __FUNCTION__);
-		$this->data['content'] = $this->parser->parse(template.'/team.html', $this->data, true);
-		$this->parser->parse(template.'/index_frontend.html', $this->data, false);
-	}
-    /*****************************************************************************/
 	function layanan()
     {
-		$this->data['function'] = str_replace("_"," ", __FUNCTION__);
+		$this->data['function'] = str_replace("_"," ", 'Layanan');
 		$this->data['content'] = $this->parser->parse(template.'/services.html', $this->data, true);
 		$this->parser->parse(template.'/index_frontend.html', $this->data, false);
 	}

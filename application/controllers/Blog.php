@@ -68,7 +68,7 @@ class Blog extends MY_Controller {
     /*****************************************************************************/
     function detail() 
     {
-        $this->data['function'] = str_replace("_"," ", 'detail');
+        $this->data['function'] = str_replace("_"," ", 'Detail');
         $arg = func_get_args();
         
         $this->db->where('blog_id', $arg[0]);

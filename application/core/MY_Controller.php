@@ -199,11 +199,6 @@ class MY_Controller extends CI_Controller
         $this->db->where($array);
         $faq = $this->db->get('content')->result();
         $this->data['faq'] = $faq;
-        foreach ($faq as $key => $value) {
-            $value->subclasstitle = 'accordion-button collapsed';
-            $value->subclassdesc  = 'accordion-collapse collapse';
-            $value->subclassdescbody  = 'accordion-body';
-        }
 
         $array = array('content_category' => 13, 'content_parent' => 0);
         $this->db->where($array);
@@ -254,7 +249,7 @@ class MY_Controller extends CI_Controller
         $this->db->where($array);
         $social = $this->db->get('content')->result();
         $this->data['social'] = $social;
-        // opn($img);exit();
+        // opn($social);exit();
     /*****************************************************************************/ 
 		
     /*****************************Setting Template Aktif************************************************/ 

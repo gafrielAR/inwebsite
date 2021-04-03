@@ -45,7 +45,7 @@ class Portfolio extends MY_Controller {
     /*****************************************************************************/
     function detail() 
     {
-        $this->data['function'] = str_replace("_"," ", 'detail');
+        $this->data['function'] = str_replace("_"," ", 'Detail');
         $arg = func_get_args();
 		
         $this->db->where('portfolio_id', $arg[0]);
