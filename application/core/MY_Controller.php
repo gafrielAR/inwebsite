@@ -99,62 +99,104 @@ class MY_Controller extends CI_Controller
         
         // content
         // hero
-        $this->db->where('content_category', 1);
+        $array = array('content_category' => 1, 'content_parent' => 0);
+        $this->db->where($array);
         $hero = $this->db->get('content')->result();
         $this->data['hero'] = $hero;
+        foreach ($hero as $key => $value) {
+            $this->db->where('content_parent', $value->content_id);
+            $subcontent = $this->db->get('content')->result();
+            $subchild = array();
+            $subchild_ren = array();
+            foreach ($subcontent as $skey => $sub_value) {
+                $array_key = array_keys((array)$sub_value) ;
+                $array_value = array_values((array)$sub_value);
+                foreach ($array_key as $sub_key => $subvaluemenu) {
+                    $subchild_ren['ch_'.$subvaluemenu] = $array_value[$sub_key];
+                }
+                $subchild [] = $subchild_ren;
+            }
+            $value->child = $subchild;
+        }
         // opn($value);exit();
 
         // values
-        $this->db->where('content_category', 2);
+        $array = array('content_category' => 2, 'content_parent' => 0);
+        $this->db->where($array);
         $value = $this->db->get('content')->result();
         $this->data['value'] = $value;
         // opn($value);exit();
         
         // count
-        $this->db->where('content_category', 3);
+        $array = array('content_category' => 3, 'content_parent' => 0);
+        $this->db->where($array);
         $count = $this->db->get('content')->result();
         $this->data['count'] = $count;
         // opn($value);exit();
 
         // features
-        $this->db->where('content_category', 4);
+        $array = array('content_category' => 4, 'content_parent' => 0);
+        $this->db->where($array);
         $feature = $this->db->get('content')->result();
         $this->data['feature'] = $feature;
         foreach ($feature as $key => $value) {
             $value->aos_zoom_out = 'zoom-out';
         }
 
-        $this->db->where('content_category', 5);
+        $array = array('content_category' => 5, 'content_parent' => 0);
+        $this->db->where($array);
         $feature_img = $this->db->get('content')->result();
         $this->data['feature_img'] = $feature_img;
-        // opn($img);exit();
 
-        $this->db->where('content_category', 6);
+        $array = array('content_category' => 6, 'content_parent' => 0);
+        $this->db->where($array);
         $title = $this->db->get('content')->result();
         $this->data['title'] = $title;
+        foreach ($title as $key => $value) {
+            $this->db->where('content_parent', $value->content_id);
+            $subcontent = $this->db->get('content')->result();
+            $subchild = array();
+            $subchild_ren = array();
+            foreach ($subcontent as $skey => $sub_value) {
+                $array_key = array_keys((array)$sub_value) ;
+                $array_value = array_values((array)$sub_value);
+                foreach ($array_key as $sub_key => $subvaluemenu) {
+                    $subchild_ren['ch_'.$subvaluemenu] = $array_value[$sub_key];
+                }
+                $subchild [] = $subchild_ren;
+            }
+            $value->child = $subchild;
+        }
+        // opn($value);exit();
 
-        $this->db->where('content_category', 7);
+        $array = array('content_category' => 7, 'content_parent' => 0);
+        $this->db->where($array);
         $descvisi = $this->db->get('content')->result();
         $this->data['descvisi'] = $descvisi;
 
-        $this->db->where('content_category', 8);
+        $array = array('content_category' => 8, 'content_parent' => 0);
+        $this->db->where($array);
         $descmisi = $this->db->get('content')->result();
         $this->data['descmisi'] = $descmisi;
         // opn($descmisi);exit();
 
-        $this->db->where('content_category', 9);
+        $array = array('content_category' => 9, 'content_parent' => 0);
+        $this->db->where($array);
         $vismisimg = $this->db->get('content')->result();
         $this->data['vismisimg'] = $vismisimg;
 
-        $this->db->where('content_category', 10);
+        $array = array('content_category' => 10, 'content_parent' => 0);
+        $this->db->where($array);
         $pilih = $this->db->get('content')->result();
         $this->data['pilih'] = $pilih;
 
-        $this->db->where('content_category', 11);
+        $array = array('content_category' => 11, 'content_parent' => 0);
+        $this->db->where($array);
         $kelebihan = $this->db->get('content')->result();
         $this->data['kelebihan'] = $kelebihan;
 
-        $this->db->where('content_category', 12);
+        $array = array('content_category' => 12, 'content_parent' => 0);
+        $this->db->where($array);
         $faq = $this->db->get('content')->result();
         $this->data['faq'] = $faq;
         foreach ($faq as $key => $value) {
@@ -163,7 +205,8 @@ class MY_Controller extends CI_Controller
             $value->subclassdescbody  = 'accordion-body';
         }
 
-        $this->db->where('content_category', 13);
+        $array = array('content_category' => 13, 'content_parent' => 0);
+        $this->db->where($array);
         $testimoni = $this->db->get('content')->result();
         $this->data['testimoni'] = $testimoni;
 
@@ -184,26 +227,31 @@ class MY_Controller extends CI_Controller
         $this->data['tag'] = $tag ;
         // opn($post);exit();
 
-        $this->db->where('content_category', 15);
+        $array = array('content_category' => 15, 'content_parent' => 0);
+        $this->db->where($array);
         $tentang = $this->db->get('content')->result();
         $this->data['tentang'] = $tentang;
         foreach ($tentang as $key => $value) {
             $value->subtitle  = 'Siapa Kami';
         }
 
-        $this->db->where('content_category', 16);
+        $array = array('content_category' => 16, 'content_parent' => 0);
+        $this->db->where($array);
         $service = $this->db->get('content')->result();
         $this->data['service'] = $service;
 
-        $this->db->where('content_category', 17);
+        $array = array('content_category' => 17, 'content_parent' => 0);
+        $this->db->where($array);
         $contact = $this->db->get('content')->result();
         $this->data['contact'] = $contact;
 
-        $this->db->where('content_category', 17);
+        $array = array('content_category' => 17, 'content_parent' => 0);
+        $this->db->where($array);
         $contactfoot = $this->db->get('content', 3)->result();
         $this->data['contactfoot'] = $contactfoot;
 
-        $this->db->where('content_category', 18);
+        $array = array('content_category' => 18, 'content_parent' => 0);
+        $this->db->where($array);
         $social = $this->db->get('content')->result();
         $this->data['social'] = $social;
         // opn($img);exit();

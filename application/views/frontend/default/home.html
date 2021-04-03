@@ -8,10 +8,16 @@
                     <h1 data-aos="fade-up">{content_title}</h1>
                     <div data-aos="fade-up" data-aos-delay="600">
                         <div class="{desc_class}">
-                            <a href="{base}/page/hubungi" class="btn-get-started d-inline-flex align-items-center justify-content-center align-self-center">
-                                <span>{content_desc}</span>
-                                <i class="{content_icon}"></i>
+                            {child}
+                            <a onclick="window.open({ch_content_href});" {ch_content_color} class="btn-get-started d-inline-flex align-items-center justify-content-center align-self-center">
+                                <span>{ch_content_title}</span>
+                                <i class="{ch_content_icon}"></i>
                             </a>
+                            {/child}
+                            <!-- <a onclick="window.open('tel:085710021257','_blank');" class="btn-get-started d-inline-flex align-items-center justify-content-center align-self-center">
+                                <span>Telpon</span>
+                                <i class="bi bi-telephone"></i>
+                            </a> -->
                         </div>
                     </div>
                 </div>
@@ -122,16 +128,26 @@
                         <li>
                             <a class="nav-link {content_desc}" data-bs-toggle="pill" href="#{content_title}">{content_title}</a>
                         </li>
-                        {/title}                        
+                        {/title}
                     </ul><!-- End Tabs -->
 
                     <!-- Tab Content -->
                     <div class="tab-content">
-                        
-                        {descvisi}
+                        {title}
+                        <div class="tab-pane fade show" id="{content_title}">
+                            {child}
+                            <div class="d-flex align-items-center mb-2">
+                                <i class="{content_icon}"></i>
+                                <h4>{ch_content_title}</h4>
+                            </div>
+                            <p>{ch_content_desc}</p>
+                            {/child}
+                        </div>
+                        {/title}
+                        <!-- {descvisi}
                         <div class="tab-pane fade show active" id="{content_title}">
                             <p>{content_desc}</p>
-                        </div><!-- End Tab 1 Content -->
+                        </div>End Tab 1 Content
                         {/descvisi}
 
                         <div class="tab-pane fade show" id="Misi">
@@ -142,7 +158,7 @@
                             </div>
                             <p>{content_desc}</p>
                             {/descmisi}
-                        </div><!-- End Tab 2 Content -->
+                        </div>End Tab 2 Content -->
 
                     </div>
 
