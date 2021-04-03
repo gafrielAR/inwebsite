@@ -21,39 +21,43 @@ class Blog extends MY_Controller {
 	function index()
     {
 		$this->data['function'] = str_replace("_"," ", 'Blog');
-        
+
         $cari	= $this->input->get('cari');
         $tag    = $this->input->get('tag');
         $kat    = $this->input->get('kategori');
-        $blog_all = $this->db->get('blog')->result();
 
-        if ($cari != null) {
-            $blog_all = $this->db->query("SELECT * from blog WHERE blog_title like '%$cari%'")->result();
+        if ($cari) {
+            $blog_all = $this->db->query("SELECT *
+            from blog
+            WHERE blog_title
+            like '%$cari%'")->result();
+            foreach($blog_all as $key => $value){
+                $value->content_limit = word_limiter($value->blog_content, 37);
+            }
+        } elseif ($tag) {
+            $blog_all = 
+                $this->db->query("SELECT *
+                FROM tag
+                INNER JOIN blog_tag
+                ON tag.tag_id = blog_tag.tag_id
+                INNER JOIN blog
+                ON blog_tag.blog_id = blog.blog_id
+                WHERE tag_name LIKE '%$tag%'")->result();
+            foreach($blog_all as $key => $value){
+                $value->content_limit = word_limiter($value->blog_content, 37);
+            }
+        } elseif ($kat) {
+            $blog_all = $this->db->query("SELECT *
+                from blog
+                WHERE blog_category
+                like '%$kat%'")->result();
             foreach($blog_all as $key => $value){
                 $value->content_limit = word_limiter($value->blog_content, 37);
             }
         } else {
-            if ($tag != null) {
-                $this->db->query("SELECT * from blog WHERE tag_name like '%$tag%'");
-                $this->db->join('tag','blog_tag.tag_id = tag.tag_id','Inner');
-                $this->db->group_by('blog_id');
-                $blog_all = $this->db->get('blog_tag')->result();
-                // $this->db->join('tag','blog_tag.tag_id = tag.tag_id','Inner');
-                foreach($blog_all as $key => $value){
-                    // opn($blog_all);exit();
-                    $value->content_limit = word_limiter($value->blog_content, 37);
-                }
-            } else {
-                if ($kat != null) {
-                    $blog_all = $this->db->query("SELECT * from blog WHERE blog_category like '%$kat%'")->result();
-                    foreach($blog_all as $key => $value){
-                        $value->content_limit = word_limiter($value->blog_content, 37);
-                    }
-                } else {
-                    foreach($blog_all as $key => $value){
-                        $value->content_limit = word_limiter($value->blog_content, 37);
-                    }
-                }
+            $blog_all = $this->db->get('blog')->result();
+            foreach($blog_all as $key => $value){
+                $value->content_limit = word_limiter($value->blog_content, 37);
             }
         }
         $this->data['blog_all'] = $blog_all;
