@@ -249,6 +249,9 @@ class MY_Controller extends CI_Controller
         $this->db->where($array);
         $social = $this->db->get('content')->result();
         $this->data['social'] = $social;
+
+        $price = $this->db->get('product')->result();
+        $this->data['price'] = $price;
         // opn($social);exit();
     /*****************************************************************************/ 
 		

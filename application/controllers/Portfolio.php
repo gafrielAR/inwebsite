@@ -13,6 +13,7 @@ class Portfolio extends MY_Controller {
 		$this->data['sidebar'] = $this->parser->parse(template.'/blog-sidebar.html', $this->data, true);
 		// $this->data['body'] = $this->parser->parse('frontend/parsial/body.html', $this->data, true);
 		$this->data['footer'] = $this->parser->parse(template.'/footer.html', $this->data, true);
+		$this->data['buletin'] = "";
 	}
     /*****************************************************************************/
     /*****************************************************************************/

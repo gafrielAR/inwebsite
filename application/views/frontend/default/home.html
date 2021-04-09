@@ -220,26 +220,22 @@
 
             <div class="row gy-4" data-aos="fade-left">
 
+                {price}
                 <div class="col-lg-3 col-md-6" data-aos="zoom-in" data-aos-delay="100">
                     <div class="box">
-                        <h3 style="color: #07d5c0;">Compro Statis</h3>
-                        <div class="price"><sup>Rp.</sup> 1.3<span> jt</span></div>
-                        <img src="{base}/aset/img/pricing-free.png" class="img-fluid" alt="">
+                        {product_featured}
+                        <h3 {product_color}>{product_title}</h3>
+                        <div class="price">{product_price}</div>
+                        <img src="{base}/aset/img/{product_image}" class="img-fluid" alt="">
                         <ul>
-                            <li>3 - 5 Halaman</li>
-                            <li>Unlimited Bandwidth</li>
-                            <li>Google Search</li>
-                            <li>Email Perusahaan</li>
-                            <li>1GB Disk Space</li>
-                            <li class="na">Aplikasi Android</li>
-                            <li class="na">Gratis Domain</li>
-                            <li>&nbsp;</li>
+                            {product_desc}
                         </ul>
                         <a href="{base}/page/buy" class="btn-buy">Buy Now</a>
                     </div>
                 </div>
+                {/price}
 
-                <div class="col-lg-3 col-md-6" data-aos="zoom-in" data-aos-delay="200">
+                <!-- <div class="col-lg-3 col-md-6" data-aos="zoom-in" data-aos-delay="200">
                     <div class="box">
                         <span class="featured">Featured</span>
                         <h3 style="color: #65c600;">Compro Dinamis</h3>
@@ -288,7 +284,7 @@
                         </ul>
                         <a href="{base}/page/buy" class="btn-buy">Buy Now</a>
                     </div>
-                </div>
+                </div> -->
 
             </div>
 

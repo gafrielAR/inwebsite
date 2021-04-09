@@ -13,6 +13,7 @@ class Page extends MY_Controller {
 		$this->data['sidebar'] = $this->parser->parse(template.'/blog-sidebar.html', $this->data, true);
 		// $this->data['body'] = $this->parser->parse('frontend/parsial/body.html', $this->data, true);
 		$this->data['footer'] = $this->parser->parse(template.'/footer.html', $this->data, true);
+		$this->data['buletin'] = "";
 
 		$this->load->library('session');
 		$this->load->helper('text');
@@ -22,6 +23,7 @@ class Page extends MY_Controller {
 	function index()
     {
 		$this->data['content'] = $this->parser->parse(template.'/home.html', $this->data, true);
+		$this->data['buletin'] = $this->parser->parse(template.'/buletin.html', $this->data, true);
 		$this->parser->parse(template.'/index_frontend.html', $this->data, false);
 	}
     /*****************************************************************************/

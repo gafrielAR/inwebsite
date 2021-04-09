@@ -1,17 +1,11 @@
 <footer id="footer" class="footer">
 
+    {buletin}
+
     <div class="footer-newsletter">
         <div class="container">
             <div class="row justify-content-center">
-                <div class="col-lg-12 text-center">
-                    <h4>Buletin</h4>
-                    <p>Subscribe ke email kami dan dapatkan notifikasi postingan terbaru kami<p>
-                </div>
-                <div class="col-lg-6">
-                    <form action="{base}/page/subscribe" method="post">
-                        <input type="email" name="email" placeholder="Email"><input type="submit" value="Subscribe">
-                    </form>
-                </div>
+                <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d15955.582980804194!2d116.8981967!3d-1.2321691!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x1f3a608c0a448e93!2sinKomputer%20Balikpapan!5e0!3m2!1sen!2sid!4v1617956096015!5m2!1sen!2sid" width="800" height="600" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
             </div>
         </div>
     </div>
@@ -33,7 +27,7 @@
                 </div>
 
                 <div class="col-lg-2 col-6 footer-links">
-                    <h4>Useful Links</h4>
+                    <h4>Menu</h4>
                     <ul>
                         {usefullink}
                             <li><i class="bi bi-chevron-right"></i><a href="{base}/{menus_href}">{menus_name}</a>
@@ -43,7 +37,7 @@
                 </div>
 
                 <div class="col-lg-2 col-6 footer-links">
-                    <h4>Our Services</h4>
+                    <h4>Layanan Kami</h4>
                     <ul>
                         {service}
                             <li><i class="bi bi-chevron-right"></i><a href="{base}/page/layanan">{content_title}</a>
@@ -53,7 +47,7 @@
                 </div>
 
                 <div class="col-lg-3 col-md-12 footer-contact text-center text-md-start">
-                    <h4>Contact Us</h4>
+                    <h4>Hubungi Kami</h4>
                     {contactfoot}
                         {content_desc}
                     {/contactfoot}
