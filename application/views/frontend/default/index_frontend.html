@@ -67,6 +67,14 @@
 	<script src="{base}/aset/js/main.js"></script>
 
 	<script>
+		$(document).ready(function () {
+			$('#VisiMisi').find('#titleVisi').addClass('active');
+		});
+
+		$(document).ready(function () {
+			$('#VisiMisi').find('#descVisi').addClass('active');
+		});
+
 		$(function(){
 			var url = window.location.href; 
 			$("ul#nav-menu a").each(function() {
@@ -77,8 +85,7 @@
 				}
 			});
 		});
-	</script>
-	<script>
+
 		$(document).ready(function(){
 			$('#wasama').prop('checked', false);
 			

@@ -118,7 +118,7 @@
 
             <!-- Feature Tabs -->
             <div class="row feture-tabs" data-aos="fade-up">
-                <div class="col-lg-6">
+                <div class="col-lg-6" id="VisiMisi">
                     
                     <h3>Visi Misi</h3>
                     
@@ -126,7 +126,7 @@
                     <ul class="nav nav-pills mb-3">
                         {title}
                         <li>
-                            <a class="nav-link {content_desc}" data-bs-toggle="pill" href="#{content_title}">{content_title}</a>
+                            <a class="nav-link" data-bs-toggle="pill" href="#desc{content_title}" id="title{content_title}">{content_title}</a>
                         </li>
                         {/title}
                     </ul><!-- End Tabs -->
@@ -134,9 +134,9 @@
                     <!-- Tab Content -->
                     <div class="tab-content">
                         {title}
-                        <div class="tab-pane fade show {content_desc}" id="{content_title}">
+                        <div class="tab-pane fade show" id="desc{content_title}">
                             {child}
-                            <div class="d-flex align-items-center mb-2">
+                            <div class="d-flex align-items-center mb-2" id="">
                                 <i class="bi bi-check"></i>
                                 <h4>{ch_content_title}</h4>
                             </div>

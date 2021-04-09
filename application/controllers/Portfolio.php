@@ -25,7 +25,7 @@ class Portfolio extends MY_Controller {
             $portfolio_cat = $value;
         }
         $this->data['portfolio_cat'] = $portfolio_cat ;
-        
+
         // $this->db->where('produk.kategori_produk_id IN ('.$implode.')');
         $this->db->join('portfolio_image','portfolio.portfolio_id = portfolio_image.portfolio_id','Left');
         $this->db->group_by('portfolio_category');
