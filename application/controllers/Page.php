@@ -95,6 +95,12 @@ class Page extends MY_Controller {
 
 	}
     /*****************************************************************************/
+	function landing()
+	{
+		$this->data['content'] = $this->parser->parse(template.'/landing.html', $this->data, true);
+		$this->parser->parse(template.'/index_frontend.html', $this->data, false);
+	}
+    /*****************************************************************************/
 
 }
 
