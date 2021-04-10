@@ -29,11 +29,16 @@ class Blog extends MY_Controller {
 
         if ($cari) {
             $blog_all = $this->db->query("SELECT *
-            from blog
-            WHERE blog_title
-            like '%$cari%'")->result();
-            foreach($blog_all as $key => $value){
-                $value->content_limit = word_limiter($value->blog_content, 37);
+                from blog
+                WHERE blog_title
+                like '%$cari%'")->result();
+                // opn($blog_all);exit();
+            if ($blog_all) {
+                foreach($blog_all as $key => $value){
+                    $value->content_limit = word_limiter($value->blog_content, 37);
+                }
+            } else {
+                redirect($_SERVER['HTTP_REFERER']);
             }
         } elseif ($tag) {
             $blog_all = 
@@ -44,21 +49,33 @@ class Blog extends MY_Controller {
                 INNER JOIN blog
                 ON blog_tag.blog_id = blog.blog_id
                 WHERE tag_name LIKE '%$tag%'")->result();
-            foreach($blog_all as $key => $value){
-                $value->content_limit = word_limiter($value->blog_content, 37);
-            }
+                if ($blog_all) {
+                    foreach($blog_all as $key => $value){
+                        $value->content_limit = word_limiter($value->blog_content, 37);
+                    }
+                } else {
+                    redirect($_SERVER['HTTP_REFERER']);
+                }
         } elseif ($kat) {
             $blog_all = $this->db->query("SELECT *
                 from blog
                 WHERE blog_category
                 like '%$kat%'")->result();
-            foreach($blog_all as $key => $value){
-                $value->content_limit = word_limiter($value->blog_content, 37);
+            if ($blog_all) {
+                foreach($blog_all as $key => $value){
+                    $value->content_limit = word_limiter($value->blog_content, 37);
+                }
+            } else {
+                redirect($_SERVER['HTTP_REFERER']);
             }
         } else {
             $blog_all = $this->db->get('blog')->result();
-            foreach($blog_all as $key => $value){
-                $value->content_limit = word_limiter($value->blog_content, 37);
+            if ($blog_all) {
+                foreach($blog_all as $key => $value){
+                    $value->content_limit = word_limiter($value->blog_content, 37);
+                }
+            } else {
+                redirect($_SERVER['HTTP_REFERER']);
             }
         }
         $this->data['blog_all'] = $blog_all;
